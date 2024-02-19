@@ -1,3 +1,4 @@
+import Conversations from "./Conversations";
 import SearchInput from "./SearchInput";
 
 const Sidebar = () => {
@@ -6,7 +7,7 @@ const Sidebar = () => {
               <SearchInput/>
               <div className="divider px-3"></div>
               <Conversations/>
-              <LogoutButton/>
+              {/* <LogoutButton/> */}
         </div>
     )}
 export default Sidebar;
