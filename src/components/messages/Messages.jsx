@@ -1,16 +1,28 @@
+import { useEffect, useRef } from "react";
 import useGetMessages from "../../hooks/useGetMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 
 const Messages = () => {
   const { loading, messages } = useGetMessages();
-  console.log("messagesss", messages);
+  
+  const lastMessageRef = useRef();
+  useEffect(()=>{
+   setTimeout(() => {
+    lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
+   }, 100);
+  },[messages])
   return (
     <div className="overflow-auto px-4 flex-1">
 
 
         {!loading && messages.length>0 && messages.map((message) => (
-          <Message key={message._id} message={message} />
+          <div 
+          key={message._id}
+          ref={lastMessageRef}
+          >
+            <Message  message={message} />
+          </div>
         ))}
 
 
