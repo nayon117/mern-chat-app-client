@@ -1,4 +1,5 @@
 import useGetConversations from "../../hooks/useGetConversations";
+import { getRandomEmoji } from "../../utils/emoji";
 import Conversation from "./Conversation";
 
 const Conversations = () => {
@@ -7,8 +8,13 @@ const Conversations = () => {
   return (
     <div className="py-2 flex flex-col overflow-auto">
 
-        {conversations.map((conversation)=>(
-            <Conversation key={conversation.id} conversation={conversation} />
+        {conversations.map((conversation, idx)=>(
+            <Conversation 
+            key={conversation.id} 
+            conversation={conversation}
+            emoji= {getRandomEmoji()}
+            lastIdx={idx === conversations.length - 1}
+            />
         ))}
 
 
